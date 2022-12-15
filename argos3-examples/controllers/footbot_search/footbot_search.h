@@ -13,7 +13,7 @@
  *
  * This controller is meant to be used with the XML files:
  *    experiments/diffusion_1.argos
- *    experiments/diffusion_10.argoscheck
+ *    experiments/diffusion_10.argos
  */
 
 #ifndef FOOTBOT_SEARCH_H

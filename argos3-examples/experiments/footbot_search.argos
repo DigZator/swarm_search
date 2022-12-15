@@ -2,12 +2,6 @@
 <argos-configuration>
 
   <!-- ************************* -->
-<<<<<<< HEAD
-  <!-- * General configurationcheck * -->
-  <!-- ************************* -->
-  <framework>
-    <system threads="0" />
-=======
   <!-- * General configuration * -->
   <!-- ************************* -->
   <framework>
@@ -29,7 +23,6 @@
           or set to zero, this value is taken from the clock and a warning
           message is displayed.
     -->
->>>>>>> 5c03604761ee2b5882a811cca18b15e71e8f2bf2
     <experiment length="0"
                 ticks_per_second="10"
                 random_seed="124" />
@@ -40,16 +33,6 @@
   <!-- *************** -->
   <controllers>
 
-<<<<<<< HEAD
-    <footbot_search_controller id="fdc"
-                                  library="build/controllers/footbot_search/libfootbot_search.so">
-      <actuators>
-        <differential_steering implementation="default" />
-      </actuators>
-      <sensors>
-        <footbot_proximity implementation="default" show_rays="true" />
-      </sensors>
-=======
     <!-- 
          Here you list the controllers to be used in the experiment.
          The XML tag is set by the REGISTER_CONTROLLER(class, "tag") macro.
@@ -109,7 +92,6 @@
           controller's header file in
           controllers/footbot_diffusion/footbot_diffusion.h.
       -->
->>>>>>> 5c03604761ee2b5882a811cca18b15e71e8f2bf2
       <params alpha="7.5" delta="0.1" velocity="5" />
     </footbot_search_controller>
 
@@ -118,65 +100,6 @@
   <!-- *********************** -->
   <!-- * Arena configuration * -->
   <!-- *********************** -->
-<<<<<<< HEAD
-  <arena size="5, 5, 1" center="0,0,0.5">
-
-    <box id="wall_north" size="4,0.1,0.5" movable="false">
-      <body position="0,2,0" orientation="0,0,0" />
-    </box>
-    <box id="wall_south" size="4,0.1,0.5" movable="false">
-      <body position="0,-2,0" orientation="0,0,0" />
-    </box>
-    <box id="wall_east" size="0.1,4,0.5" movable="false">
-      <body position="2,0,0" orientation="0,0,0" />
-    </box>
-    <box id="wall_west" size="0.1,4,0.5" movable="false">
-      <body position="-2,0,0" orientation="0,0,0" />
-    </box>
-
-    <!--
-        You can distribute entities randomly. Here, we distribute
-        10 foot-bots in this way:
-        - the position is uniformly distributed
-        on the ground, in the square whose corners are (-2,-2) and (2,2)
-        - the orientations are non-zero only when rotating around Z and chosen
-        from a gaussian distribution, whose mean is zero degrees and
-        standard deviation is 360 degrees.
-    -->
-    <distribute>
-      <position method="uniform" min="-2,-2,0" max="2,2,0" />
-      <orientation method="gaussian" mean="0,0,0" std_dev="360,0,0" />
-      <entity quantity="10" max_trials="100">
-        <foot-bot id="fb">
-          <controller config="fdc" />
-        </foot-bot>
-      </entity>
-    </distribute>
-
-    <!--
-        We distribute 5 boxes uniformly in position and rotation around Z.
-    -->
-    <distribute>
-      <position method="uniform" min="-2,-2,0" max="2,2,0" />
-      <orientation method="uniform" min="0,0,0" max="360,0,0" />
-      <entity quantity="5" max_trials="100">
-        <box id="b" size="0.3,0.3,0.5" movable="false" />
-      </entity>
-    </distribute>
-
-    <!--
-        We distribute cylinders uniformly in position and with
-        constant rotation (rotating a cylinder around Z does not
-        matter)
-    -->
-    <distribute>
-      <position method="uniform" min="-2,-2,0" max="2,2,0" />
-      <orientation method="constant" values="0,0,0" />
-      <entity quantity="5" max_trials="100">
-        <cylinder id="c" height="0.5" radius="0.15" movable="false" />
-      </entity>
-    </distribute>
-=======
   <!--
       Here you place all the objects in the arena.
       All linear measures are expressed in meters.
@@ -213,7 +136,6 @@
       <body position="0,0,0" orientation="0,0,0" />
       <controller config="fdc"/>
     </foot-bot>
->>>>>>> 5c03604761ee2b5882a811cca18b15e71e8f2bf2
 
   </arena>
 
