@@ -13,11 +13,11 @@
  *
  * This controller is meant to be used with the XML files:
  *    experiments/diffusion_1.argos
- *    experiments/diffusion_10.argos
+ *    experiments/diffusion_10.argoscheck
  */
 
-#ifndef FOOTBOT_DIFFUSION_H
-#define FOOTBOT_DIFFUSION_H
+#ifndef FOOTBOT_SEARCH_H
+#define FOOTBOT_SEARCH_H
 
 /*
  * Include some necessary headers.
@@ -38,15 +38,15 @@ using namespace argos;
 /*
  * A controller is simply an implementation of the CCI_Controller class.
  */
-class CFootBotDiffusion : public CCI_Controller {
+class CFootBotSearch : public CCI_Controller {
 
 public:
 
    /* Class constructor. */
-   CFootBotDiffusion();
+   CFootBotSearch();
 
    /* Class destructor. */
-   virtual ~CFootBotDiffusion() {}
+   virtual ~CFootBotSearch() {}
 
    /*
     * This function initializes the controller.

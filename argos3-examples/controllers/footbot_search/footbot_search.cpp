@@ -1,5 +1,5 @@
 /* Include the controller definition */
-#include "footbot_diffusion.h"
+#include "footbot_search.h"
 /* Function definitions for XML parsing */
 #include <argos3/core/utility/configuration/argos_configuration.h>
 /* 2D vector definition */
@@ -8,7 +8,7 @@
 /****************************************/
 /****************************************/
 
-CFootBotDiffusion::CFootBotDiffusion() :
+CFootBotSearch::CFootBotSearch() :
    m_pcWheels(NULL),
    m_pcProximity(NULL),
    m_cAlpha(10.0f),
@@ -18,9 +18,9 @@ CFootBotDiffusion::CFootBotDiffusion() :
                            ToRadians(m_cAlpha)) {}
 
 /****************************************/
-/****************************************/
+/****************************************/a
 
-void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
+void CFootBotSearch::Init(TConfigurationNode& t_node) {
    /*
     * Get sensor/actuator handles
     *
@@ -61,7 +61,7 @@ void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
 /****************************************/
 /****************************************/
 
-void CFootBotDiffusion::ControlStep() {
+void CFootBotSearch::ControlStep() {
    /* Get readings from proximity sensor */
    const CCI_FootBotProximitySensor::TReadings& tProxReads = m_pcProximity->GetReadings();
    /* Sum them together */
@@ -103,4 +103,4 @@ void CFootBotDiffusion::ControlStep() {
  * controller class to instantiate.
  * See also the configuration files for an example of how this is used.
  */
-REGISTER_CONTROLLER(CFootBotDiffusion, "footbot_diffusion_controller")
+REGISTER_CONTROLLER(CFootBotSearch, "footbot_search_controller")
