@@ -2,8 +2,62 @@
 #include "footbot_search.h"
 /* Function definitions for XML parsing */
 #include <argos3/core/utility/configuration/argos_configuration.h>
+#include <argos3/core/utility/logging/argos_log.h>
 /* 2D vector definition */
 #include <argos3/core/utility/math/vector2.h>
+
+/****************************************/
+/****************************************/
+
+void CFootBotSearch::SWheelTurningParams::Init(TConfigurationNode& t_node) {
+   try {
+      TurningMechanism = NO_TURN;
+      CDegrees cAngle;
+      GetNodeAttribute(t_node, "hard_turn_angle_threshold", cAngle);
+      HardTurnOnAngleThreshold = ToRadians(cAngle);
+      GetNodeAttribute(t_node, "soft_turn_angle_threshold", cAngle);
+      SoftTurnOnAngleThreshold = ToRadians(cAngle);
+      GetNodeAttribute(t_node, "no_turn_angle_threshold", cAngle);
+      NoTurnAngleThreshold = ToRadians(cAngle);
+      GetNodeAttribute(t_node, "max_speed", MaxSpeed);
+   }
+   catch(CARGoSException& ex) {
+      THROW_ARGOSEXCEPTION_NESTED("Error initializing controller wheel turning parameters.", ex);
+   }
+}
+
+/****************************************/
+/****************************************/
+
+void CFootBotSearch::SFlockingInteractionParams::Init(TConfigurationNode& t_node) {
+   try {
+      GetNodeAttribute(t_node, "target_distance", TargetDistance);
+      GetNodeAttribute(t_node, "gain", Gain);
+      GetNodeAttribute(t_node, "inercoef", InerCoef);
+      GetNodeAttribute(t_node, "selfcoef", SelfCoef);
+      GetNodeAttribute(t_node, "teamcoef", TeamCoef);
+      GetNodeAttribute(t_node, "exponent", Exponent);
+   }
+   catch(CARGoSException& ex) {
+      THROW_ARGOSEXCEPTION_NESTED("Error initializing controller flocking parameters.", ex);
+   }
+}
+
+/****************************************/
+/****************************************/
+
+/*
+ * This function is a generalization of the Lennard-Jones potential
+ */
+Real CFootBotSearch::SFlockingInteractionParams::GeneralizedLennardJones(Real f_distance) {
+   Real fNormDistExp = ::pow(TargetDistance / f_distance, Exponent);
+   return -Gain / f_distance * (fNormDistExp * fNormDistExp - fNormDistExp);
+}
+
+Real CFootBotSearch::SFlockingInteractionParams::GeneralizedLennardJones(Real f_distance) {
+   Real fNormDistExp = ::pow(TargetDistance / f_distance, Exponent);
+   return -Gain / f_distance * (fNormDistExp * fNormDistExp - fNormDistExp);
+}
 
 /****************************************/
 /****************************************/
