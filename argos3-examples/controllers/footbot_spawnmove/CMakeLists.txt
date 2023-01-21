@@ -1,0 +1,5 @@
+add_library(footbot_spawnmove MODULE footbot_spawnmove.h footbot_spawnmove.cpp)
+target_link_libraries(footbot_spawnmove
+  argos3core_simulator
+  argos3plugin_simulator_footbot
+  argos3plugin_simulator_genericrobot)
